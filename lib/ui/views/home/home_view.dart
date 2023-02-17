@@ -9,6 +9,7 @@ import '../../bloc/home_cubit/home_cubit.dart';
 import '../../utils/color.dart';
 import '../../widgets/app_bar.dart';
 import '../../widgets/employee_model.dart';
+import '../../widgets/failed_state.dart';
 import '../../widgets/search.dart';
 import '../../widgets/typography.dart';
 
@@ -25,7 +26,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   void initState() {
-    context.read<HomeCubit>().getAllEmployees();
+    context.read<HomeCubit>().getAllEmployees(true);
     super.initState();
   }
 
@@ -78,7 +79,13 @@ class _HomeViewState extends State<HomeView> {
                     ));
 
                   case HomeStateStatus.failure:
-                    return const Text("Failed");
+                    Future.delayed(const Duration(milliseconds: 3000), () async {
+                      context.read<HomeCubit>().getAllEmployees(false);
+                    });
+                    return  Padding(
+                      padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.2),
+                      child: FailedState(error: state.error,),
+                    );
 
                   default:
                     return Container();

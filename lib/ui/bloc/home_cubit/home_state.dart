@@ -12,11 +12,12 @@ extension HomeStateStatusX on HomeStateStatus {
 class HomeState extends Equatable {
   final HomeStateStatus status;
   final List<Employee>? employees;
+  ErrorModel? error;
 
-  const HomeState({this.status = HomeStateStatus.initial, this.employees});
+  HomeState({this.status = HomeStateStatus.initial, this.employees, this.error});
 
-  HomeState copyWith({HomeStateStatus? status, List<Employee>? employees}) {
-    return HomeState(status: status ?? this.status, employees: employees);
+  HomeState copyWith({HomeStateStatus? status, List<Employee>? employees, ErrorModel? error}) {
+    return HomeState(status: status ?? this.status, employees: employees, error: error);
   }
 
   @override

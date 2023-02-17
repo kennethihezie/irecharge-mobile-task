@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:irecharge/model/employee.dart';
 import 'package:mobile_assessment/ui/utils/color.dart';
+import '../../utils/constants.dart';
 import '../../widgets/app_bar.dart';
+import '../../widgets/custom_button.dart';
 import '../../widgets/typography.dart';
 
 class DetailsView extends StatefulWidget {
@@ -117,12 +119,29 @@ class _DetailsViewState extends State<DetailsView> {
                       )
                     ],
                   ),
-                )
+                ),
+
+
+                const Padding(padding: EdgeInsets.all(4)),
+
+                _showBtn(employee!.productivity_score!)
               ],
             )
           ],
         ),
       ),
     );
+  }
+
+  Widget _showBtn(num score){
+     if(score > 80){
+       return CustomButton(title: Constants.promote, color: Colors.green, callback: (){},);
+     } else if(score < 80 && score > 50){
+       return CustomButton(title: Constants.noChange, color: Colors.blue, callback: (){},);
+     } else if(score < 49 && score > 40){
+       return CustomButton(title: Constants.demote, color: Colors.purple, callback: (){},);
+     } else {
+       return CustomButton(title: Constants.terminate, color: Colors.red, callback: (){},);
+     }
   }
 }

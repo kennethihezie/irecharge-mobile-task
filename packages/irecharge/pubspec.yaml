@@ -14,7 +14,6 @@ dependencies:
   sqflite:
   path:
   shared_preferences: ^2.0.15
-  rxdart: ^0.27.5
   equatable: ^2.0.5
 
 
