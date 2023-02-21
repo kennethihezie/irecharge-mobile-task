@@ -28,9 +28,9 @@ class _FilterViewState extends State<FilterView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.all(24),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25.0),
+        padding: const EdgeInsets.all(24),
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(25), topRight: Radius.circular(25)),
           color: Colors.white,
         ),
         child: Column(
