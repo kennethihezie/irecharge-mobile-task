@@ -25,7 +25,6 @@ class _FilterViewState extends State<FilterView> {
   }
 
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
